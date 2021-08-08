@@ -74,6 +74,9 @@ function CreatedPost() {
       {
         alert("Created")
         setCaption('')
+         setUploaded(0)
+       
+        setImg(null)
       })
   }
   return (<>
