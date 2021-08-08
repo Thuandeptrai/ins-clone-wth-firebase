@@ -38,7 +38,7 @@ export default function Comments({ docId, comments: allComments, posted, comment
           </button>
         )}
         <p className="text-gray-base uppercase text-xs mt-2">
-          {formatDistance(posted, new Date())} ago
+          
         </p>
       </div>
       <AddComment

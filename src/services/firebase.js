@@ -187,3 +187,16 @@ export const signInWithGoogle = () => {
     console.log(error.message)
   })
 }
+export async function getUserIdByEmail(email) {
+  const result = await firebase
+    .firestore()
+    .collection('users')
+    .where('emailAddress', '==', email)
+    .get();
+  const user = result.docs.map((item) => ({
+    ...item.data(),
+    docId: item.id,
+  }));
+  console.log(user)
+  return user;
+}
