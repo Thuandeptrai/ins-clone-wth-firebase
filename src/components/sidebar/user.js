@@ -11,7 +11,7 @@ export default function User({ username,profilePic, fullName }) {
       <div className="flex items-center justify-between col-span-1">
         <img
           className="rounded-full h-16 w-16 flex mr-5"
-          src={profilePic}
+          src={profilePic === undefined ? DEFAULT_IMAGE_PATH : profilePic}
           alt=""
           onError={(e) => {
             e.target.src = DEFAULT_IMAGE_PATH;

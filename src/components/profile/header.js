@@ -53,7 +53,7 @@ export default function Header({
           <img
             className="rounded-full h-40 w-40 flex"
             alt={`${fullName} profile picture`}
-            src={profilePic}
+            src={profilePic === undefined ? DEFAULT_IMAGE_PATH : profilePic}
             onError={(e) => {
               e.target.src = DEFAULT_IMAGE_PATH;
             }}

@@ -38,7 +38,7 @@ export default function SuggestedProfile({
       <div className="flex items-center justify-between">
         <img
           className="rounded-full w-8 flex mr-3"
-          src={profile  === null ?  "/images/avatars/default.png" :profile}
+          src={profile === undefined ? `/images/avatars/default.png` : profilePic }
           alt=""
           onError={(e) => {
             e.target.src = `/images/avatars/default.png`;
