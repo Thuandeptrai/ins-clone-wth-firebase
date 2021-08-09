@@ -18,8 +18,10 @@ export default function Header({
     followers,
     following,
     username: profileUsername
-  }
+  },
+  profilePic
 }) {
+  
   const { user: loggedInUser } = useContext(UserContext);
   const { user } = useUser(loggedInUser?.uid);
   const [isFollowingProfile, setIsFollowingProfile] = useState(null);
@@ -51,7 +53,7 @@ export default function Header({
           <img
             className="rounded-full h-40 w-40 flex"
             alt={`${fullName} profile picture`}
-            src={`/images/avatars/${profileUsername}.jpg`}
+            src={profilePic}
             onError={(e) => {
               e.target.src = DEFAULT_IMAGE_PATH;
             }}

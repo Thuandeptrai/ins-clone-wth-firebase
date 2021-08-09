@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import {
@@ -13,8 +13,15 @@ export default function SuggestedProfile({
   username,
   profileId,
   userId,
-  loggedInUserDocId
+  loggedInUserDocId,
+  profilePic
 }) {
+  const [profile,setProfilePic] = useState(null)
+
+  useEffect(()=>{
+    setProfilePic(profilePic)
+   
+  },[profilePic])
   const [followed, setFollowed] = useState(false);
   const { setActiveUser } = useContext(LoggedInUserContext);
 
@@ -31,7 +38,7 @@ export default function SuggestedProfile({
       <div className="flex items-center justify-between">
         <img
           className="rounded-full w-8 flex mr-3"
-          src={`/images/avatars/${username}.jpg`}
+          src={profile  === null ?  "/images/avatars/default.png" :profile}
           alt=""
           onError={(e) => {
             e.target.src = `/images/avatars/default.png`;
