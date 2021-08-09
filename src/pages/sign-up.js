@@ -13,9 +13,10 @@ export default function SignUp() {
   const [fullName, setFullName] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
-  
+  const [confirmPassword, setConFirmPassword] = useState('')
+
   const [error, setError] = useState('');
-  const isInvalid = password === '' || emailAddress === '';
+  const isInvalid = password === '' || emailAddress === '' || confirmPassword !== password ;
 
   const handleSignUp = async (event) => {
     event.preventDefault();
@@ -52,6 +53,7 @@ export default function SignUp() {
         setFullName('');
         setEmailAddress('');
         setPassword('');
+        setConFirmPassword('')
         setError(error.message);
       }
     } else {
@@ -109,6 +111,13 @@ export default function SignUp() {
               className="text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2"
               onChange={({ target }) => setPassword(target.value)}
               value={password}
+            />
+              <input
+              aria-label="Enter your password"
+              type="password"
+              placeholder="ConFirm Password"
+              className="text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary rounded mb-2"
+              onChange={({ target }) => setConFirmPassword(target.value)}
             />
             <button
               disabled={isInvalid}

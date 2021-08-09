@@ -119,10 +119,16 @@ export default function Login() {
             You forgot password ?
           </Link>
         <p className="text-sm"> OR</p>
-
-        <button  className="w-full bg-red-700 hover:bg-red-800 text-black font-bold py-2 px-4 focus:outline-none focus:shadow-outline" onClick={handleLoginWithGoogle}>Login with Google</button>
+        <div class="w-full bg-red-medium ">
+          <button
+            className="w-full  hover:bg-red-800 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline"
+            type="button"
+            onClick={handleLoginWithGoogle}
+          >Login with Google</button>
         </div>
-
+       
+        </div>
+       
       </div>
     </div>
   );
