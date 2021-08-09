@@ -97,7 +97,7 @@ export default function ChangeProfile1({proflePic}) {
    <label className="w-30 h-7 flex  items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue">
        
        <span className="text-base leading-normal">Select a image</span>
-       <input type='file' className="hidden" id='img' onChange={(e) =>setImg(e.target.files[0])} />
+       <input type='file' className="hidden bg-blue" id='img' onChange={(e) =>setImg(e.target.files[0])} />
    </label>
       </div>
       <div className="flex flex-col w-2/5 ml-20">
@@ -114,7 +114,7 @@ export default function ChangeProfile1({proflePic}) {
           
            {Uploaded === 1 ? (
 
-<div onClick={handleClick} className="btn border border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-indigo-500">Change</div>
+<button onClick={handleClick} className="btn border border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-indigo-500">Change</button>
 ):(
 <button onClick={handleUpload} disabled={isInvalid} className={isInvalid ? ` inset-x-0 bottom-0 btn border border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-indigo-500 opacity-25`:`inset-x-0 bottom-0 btn border border-indigo-500 p-1 px-4 font-semibold cursor-pointer text-gray-200 ml-2 bg-indigo-500 ` }>Upload</button>
 
