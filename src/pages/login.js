@@ -121,7 +121,7 @@ export default function Login() {
         <p className="text-sm"> OR</p>
         <div class="w-full bg-red-medium ">
           <button
-            className="w-full  hover:bg-red-800 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline"
+            className="w-full  bg-red-primary text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline"
             type="button"
             onClick={handleLoginWithGoogle}
           >Login with Google</button>
