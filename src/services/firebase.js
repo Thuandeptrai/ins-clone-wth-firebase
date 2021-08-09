@@ -33,21 +33,22 @@ export async function getUserByUserId(userId) {
   const user = result.docs.map((item) => ({
     ...item.data(),
     docId: item.id,
+   
   }));
-
   return user;
 }
 
+
 // check all conditions before limit results
 export async function getSuggestedProfiles(userId, following) {
-  let query = firebase.firestore().collection('users');
+  let query = await firebase.firestore().collection('users');
 
   if (following.length > 0) {
     query = query.where('userId', 'not-in', [...following, userId]).limit(4);
   } else {
     query = query.where('userId', '!=', userId);
   }
-  const result = await query.limit(10).get();
+  const result = await query.limit(3).get();
 
   const profiles = result.docs.map((user) => ({
     ...user.data(),
@@ -75,7 +76,7 @@ export async function updateLoggedInUserFollowing(
 
 export async function updateFollowedUserFollowers(
   profileDocId, // currently logged in user document id (karl's profile)
-  loggedInUserDocId, // the user that karl requests to follow
+  loggedInUserDocId, // the user  requests to follow
   isFollowingProfile // true/false (am i currently following this person?)
 ) {
   return firebase
@@ -91,26 +92,23 @@ export async function updateFollowedUserFollowers(
 
 export async function getPhotos(userId, following) {
 // [5,4,2] => following
-  const result = await firebase
+   const result = await firebase
     .firestore()
     .collection('photos')
     .where('userId', 'in', following)
-    .get();
-
+    .get() 
+   
   const userFollowedPhotos = result.docs.map((photo) => ({
     ...photo.data(),
     docId: photo.id,
   }));
-
   const photosWithUserDetails = await Promise.all(
     userFollowedPhotos.map(async (photo) => {
       let userLikedPhoto = false;
       if (photo.likes.includes(userId)) {
         userLikedPhoto = true;
       }
-      // photo.userId = 2
       const user = await getUserByUserId(photo.userId);
-      // raphael
       const { username } = user[0];
       return { username, ...photo, userLikedPhoto };
     })
@@ -159,18 +157,14 @@ export async function toggleFollow(
   profileUserId,
   followingUserId
 ) {
-  // 1st param: karl's doc id
-  // 2nd param: raphael's user id
-  // 3rd param: is the user following this profile? e.g. does karl follow raphael? (true/false)
+
   await updateLoggedInUserFollowing(
     activeUserDocId,
     profileUserId,
     isFollowingProfile
   );
 
-  // 1st param: karl's user id
-  // 2nd param: raphael's doc id
-  // 3rd param: is the user following this profile? e.g. does karl follow raphael? (true/false)
+
   await updateFollowedUserFollowers(
     profileDocId,
     followingUserId,

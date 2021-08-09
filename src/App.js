@@ -15,6 +15,7 @@ const Profile = lazy(() => import('./pages/profile'));
 const NotFound = lazy(() => import('./pages/not-found'));
 const ResetPassword = lazy(()=> import('./pages/resetPassword'))
 const Post = lazy(() => import('./pages/Posts'));
+const ChangeProfile = lazy(() => import('./pages/ChangeProfile'))
 
 
 export default function App() {
@@ -35,12 +36,18 @@ export default function App() {
             <IsUserLoggedIn user={user} loggedInPath={ROUTES.DASHBOARD} path={ROUTES.RESET_PASSWORD}>
             <ResetPassword />
 
-
             </IsUserLoggedIn>
           
             <Route path={ROUTES.PROFILE} component={Profile} />
             <ProtectedRoute user={user} path={ROUTES.DASHBOARD} exact>
               <Dashboard />
+            </ProtectedRoute>
+            <ProtectedRoute user={user} path={ROUTES.CHANGE_PROFILE} exact>
+              <ChangeProfile />
+            </ProtectedRoute>
+
+            <ProtectedRoute user={user} path={ROUTES.CHANGE_PASSWORD} exact>
+              <Post/>
             </ProtectedRoute>
           
             <Route component={NotFound} />

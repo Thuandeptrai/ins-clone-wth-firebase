@@ -17,6 +17,7 @@ function CreatedPost() {
   const [img, setImg] = useState(null)
 
   const { user: { uid: userId } } = useContext(UserContext)
+  
   const { firebase } = useContext(FirebaseContext)
   var metadata = {
     contentType: 'image/jpeg'
@@ -73,9 +74,8 @@ function CreatedPost() {
       ).then(() => 
       {
         alert("Created")
+        setUploaded(0)
         setCaption('')
-         setUploaded(0)
-       
         setImg(null)
       })
   }
