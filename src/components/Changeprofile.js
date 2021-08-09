@@ -103,7 +103,7 @@ export default function ChangeProfile1({proflePic}) {
       <div className="flex flex-col w-2/5 ml-20">
         <div className="flex flex-col items-center bg-white p-4 border border-gray-primary mb-4 rounded">
           <h1 className="flex justify-center w-full">
-           <Link to ="./" className="mt-2 w-6/12 mb-4"  > <img src="/images/logo.png" alt="Instagram" /> </Link>
+           <Link to ="/" className="mt-2 w-6/12 mb-4"  > <img src="/images/logo.png" alt="Instagram" /> </Link>
           </h1>
 
           <h1 className="font-bold mb-8"> Change Image </h1>
