@@ -68,6 +68,7 @@ function CreatedPost() {
   {
     e.preventDefault()
     upload(img)
+    isInvalid(true)
 
   }
   const handlePost = async (e) => {
